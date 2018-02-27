@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="2">
+<modDesc descVersion="5">
     <author>BCDZ</author>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     
     <title>
-        <en>PriceNotify </en>
+        <en>PriceNotify</en>
+        <de>PriceNotify</de>
     </title>
     
     <description>
         <en><![CDATA[Farming Simulator 17 - Price Notify]]></en>
+        <de><![CDATA[Farming Simulator 17 - Price Notify]]></de>
     </description>
     
     <iconFilename>priceicon.dds</iconFilename>
+    <multiplayer supported="false"/>
 
-    <multiplayer supported="true"/>
-        
+    <l10n>
+		<text name="title">
+			<en>PriceNotify</en>
+			<de>PriceNotify</de>
+		</text>
+	</l10n>
+    
 	<extraSourceFiles>
-        <sourceFile filename="init.lua" />
+        <sourceFile filename="priceNotify.lua" />
     </extraSourceFiles>
 </modDesc>
