@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="30">
+    <author>BCDZ</author>
+    <version>0.1</version>
+    
+    <title>
+        <en>PriceNotify </en>
+    </title>
+    
+    <description>
+        <en>
+			<![CDATA[Shows best prices of everything you have in your silo/train silo/trailer (if you can sell it) and the respective selling point. 
+					 Text is green if price is rising.
+					 Press Left-Shift-v (default)  to display.
+					 Press Left-Shift-b (default)  to change display position.
+					 Key bind can be changed in option menu-controlls, under "Price Watch:*"
+			]]>
+        </en>
+    </description>
+
+    <multiplayer supported="true"/>
+    
+    <inputBindings>    
+		<input visible="true" name="SHOW_PRICES" category="ONFOOT VEHICLE" key1="KEY_lshift KEY_v" />
+		<input visible="true" name="CHANGE_POS" category="ONFOOT VEHICLE" key1="KEY_lshift KEY_b" />
+    </inputBindings>
+		
+	<extraSourceFiles>
+        <sourceFile filename="init.lua" />
+    </extraSourceFiles>
+</modDesc>
