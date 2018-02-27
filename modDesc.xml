@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="1">
+<modDesc descVersion="2">
     <author>BCDZ</author>
-    <version>0.1</version>
+    <version>1.0.0.0</version>
     
     <title>
         <en>PriceNotify </en>
     </title>
     
     <description>
-        <en>
-			<![CDATA[Shows best prices of everything you have in your silo/train silo/trailer (if you can sell it) and the respective selling point. 
-					 Text is green if price is rising.
-					 Press Left-Shift-v (default)  to display.
-					 Press Left-Shift-b (default)  to change display position.
-					 Key bind can be changed in option menu-controlls, under "Price Watch:*"
-			]]>
-        </en>
+        <en><![CDATA[Farming Simulator 17 - Price Notify]]></en>
     </description>
     
     <iconFilename>priceicon.dds</iconFilename>
