@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="30">
+<modDesc descVersion="1">
     <author>BCDZ</author>
     <version>0.1</version>
     
@@ -17,14 +17,11 @@
 			]]>
         </en>
     </description>
+    
+    <iconFilename>priceicon.dds</iconFilename>
 
     <multiplayer supported="true"/>
-    
-    <inputBindings>    
-		<input visible="true" name="SHOW_PRICES" category="ONFOOT VEHICLE" key1="KEY_lshift KEY_v" />
-		<input visible="true" name="CHANGE_POS" category="ONFOOT VEHICLE" key1="KEY_lshift KEY_b" />
-    </inputBindings>
-		
+        
 	<extraSourceFiles>
         <sourceFile filename="init.lua" />
     </extraSourceFiles>
