@@ -4,7 +4,7 @@ function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
 end;
 
-function priceNotify:deleteMap()  
+function priceNotify:deleteMap()
 end;
 
 function priceNotify:keyEvent(unicode, sym, modifier, isDown)
