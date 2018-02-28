@@ -8,6 +8,7 @@ if priceNotify.path:sub(-1) ~= '/' then
     priceNotify.path = priceNotify.path .. '/';
 end;
 priceNotify.modName = g_currentModName;
+priceNotify.dialog = {};
 
 -- Load scripts
 source(priceNotify.path .. 'scripts/Crops/getStoredFruits.lua')
@@ -28,7 +29,16 @@ end;
 function priceNotify:update(dt)
 
 	if priceNotify.firstLoad then
-
+		g_gui:closeAllDialogs();
+		g_gui:showYesNoDialog({
+        text = "Yep, my dialog works!",
+        title = g_i18n:getText("title"),
+        dialogType = DialogElement.TYPE_INFO,
+        callback = cb,
+        target = self,
+        yesText = "Ok",
+        noText = "Ok"
+    });
 	-- collect shops
 		for k, v in pairs(g_currentMission.tipTriggers) do
 			if v ~= nil then
@@ -46,6 +56,7 @@ function priceNotify:update(dt)
 			end;
 		end;
 
+		priceNotify:getStoredFruits();
 		priceNotify.firstLoad = false;
 		end;
 
@@ -54,6 +65,11 @@ function priceNotify:update(dt)
 	if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
 		priceNotify.deltaT = 0;
 
+		-- Green text in top right corner
+		g_currentMission:addIngameNotification(FSBaseMission.INGAME_NOTIFICATION_OK, g_i18n:getText("title"));
+
+
+		--Gui.showMessageDialog(g_i18n:getText("title"));
 		priceNotify:getStoredFruits();
 
 		print("updating fruits");
