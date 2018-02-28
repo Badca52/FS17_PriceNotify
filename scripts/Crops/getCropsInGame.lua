@@ -1,3 +1,0 @@
-function priceNotify:getCropsInGame()
-  
-end;
