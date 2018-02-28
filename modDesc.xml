@@ -2,17 +2,17 @@
 <modDesc descVersion="32">
     <author>BCDZ</author>
     <version>1.0.0.0</version>
-    
+
     <title>
         <en>PriceNotify</en>
         <de>PriceNotify</de>
     </title>
-    
+
     <description>
         <en><![CDATA[Farming Simulator 17 - Price Notify]]></en>
         <de><![CDATA[Farming Simulator 17 - Price Notify]]></de>
     </description>
-    
+
     <iconFilename>priceicon.dds</iconFilename>
     <multiplayer supported="false"/>
 
@@ -22,8 +22,8 @@
 			<de>PriceNotify</de>
 		</text>
 	</l10n>
-    
+
 	<extraSourceFiles>
-        <sourceFile filename="priceNotify.lua" />
+        <sourceFile filename="scripts/priceNotify.lua" />
     </extraSourceFiles>
 </modDesc>
