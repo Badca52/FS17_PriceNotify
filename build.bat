@@ -7,3 +7,5 @@ cd temp
 echo f | xcopy /f /y FS17_PriceNotify.zip ..\FS17_PriceNotify.zip
 cd ..
 rmdir /s /q temp
+xcopy /f /y FS17_PriceNotify.zip "C:\Users\Jeffrey\Documents\My Games\FarmingSimulator2017\mods\FS17_PriceNotify.zip"
+del /f /q FS17_PriceNotify.zip
