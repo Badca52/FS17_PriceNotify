@@ -1,8 +1,8 @@
 function priceNotify:generateAlarmLibrary()
   priceNotify.alarmLibrary = {
-    ["Wheat"] = { threshold = 600, active = false, curMaxPrice = 0 },
+    ["Wheat"] = { threshold = 700, active = false, curMaxPrice = 0 },
     ["Barley"] = { threshold = 475, active = false, curMaxPrice = 0 },
-    ["Canola"] = { threshold = 1000, active = false, curMaxPrice = 0 },
+    ["Canola"] = { threshold = 1300, active = false, curMaxPrice = 0 },
     ["Sunflowers"] = { threshold = 1100, active = false, curMaxPrice = 0 },
     ["Soybeans"] = { threshold = 1750, active = false, curMaxPrice = 0 },
     ["Corn"] = { threshold = 625, active = false, curMaxPrice = 0 },
