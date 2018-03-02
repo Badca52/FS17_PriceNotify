@@ -1,45 +1,45 @@
 function priceNotify:updatePrices()
-	local curPrice = 0;
 
 	-- go through the list of fillTypes that sellplaces accept
 	for fillT, info in pairs(priceNotify.fillTypes) do
+
+			local bestShop = nil;
 			-- go through shops to get prices
 			for k, shop in pairs(priceNotify.shops) do
+
+
 				if shop.acceptedFillTypes[fillT] ~= nil then  -- if shop buys our shit
-					curPrice = shop:getEffectiveFillTypePrice(fillT);
-          curPrice = math.floor(curPrice*1000);
-
-					-- if the shop offers more price than the currently stored price, refresh info
-					if curPrice > info.maxPrice then
-						info.maxPrice = curPrice;
-						if shop.mapHotspot ~= nil then
-							if shop.mapHotspot.fullViewName ~= nil then
-								info.shopName = shop.mapHotspot.fullViewName;
-                if shop.pricingDynamics ~= nil then
-    							if shop.pricingDynamics[fillT] ~= nil then
-    								info.trending = shop.pricingDynamics[fillT]:getBaseCurveTrend() == PricingDynamics.TREND_CLIMBING;
-										--priceNotify:showNotificationDialog(info.shopName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), info.maxPrice);
-
-										-- Only Check Corn for Now
-                    if g_i18n:getText(FillUtil.fillTypeIntToName[fillT]) == "Corn" then
-                      if info.maxPrice >= priceNotify.alarmLibrary[0].threshold and priceNotify.alarmLibrary[0].active == false then
-                        priceNotify:showNotificationDialog(info.shopName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), info.maxPrice);
-                        priceNotify.alarmLibrary[0].active = true;
-                      end;
-
-                      if info.maxPrice < priceNotify.alarmLibrary[0].threshold then
-                        priceNotify.alarmLibrary[0].active = false;
-                      end;
-                    end;
-    							end;
-    						end;
+					if bestShop == nil then
+						bestShop = shop;
+					end;
+					if bestShop.mapHotspot ~= nil then
+						if bestShop.mapHotspot.fullViewName ~= nil then
+							if bestShop.pricingDynamics ~= nil then
+								if bestShop.pricingDynamics[fillT] ~= nil then
+										shopPrice = math.floor(shop:getEffectiveFillTypePrice(fillT) * 1000);
+										if shopPrice > math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000) then
+											bestShop = shop;
+									end;
+								end;
 							end;
 						end;
-
 					end;
 				end;
 			end;
 
-	end;
+			local cropName = g_i18n:getText(FillUtil.fillTypeIntToName[fillT]);
+			
+			if priceNotify.alarmLibrary[cropName] ~= nil then
+				priceNotify.alarmLibrary[cropName].curMaxPrice = math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000);
 
+				if priceNotify.alarmLibrary[cropName].curMaxPrice >= priceNotify.alarmLibrary[cropName].threshold and priceNotify.alarmLibrary[cropName].active == false then
+					priceNotify:showNotificationDialog(bestShop.mapHotspot.fullViewName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), priceNotify.alarmLibrary[cropName].curMaxPrice);
+					priceNotify.alarmLibrary[cropName].active = true;
+				end;
+
+				if priceNotify.alarmLibrary[cropName].curMaxPrice < priceNotify.alarmLibrary[cropName].threshold then
+					priceNotify.alarmLibrary[cropName].active = false;
+				end;
+			end;
+	end;
 end;

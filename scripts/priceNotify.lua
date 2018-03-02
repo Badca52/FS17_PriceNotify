@@ -64,19 +64,19 @@ function priceNotify:draw()
 		setTextAlignment(RenderText.ALIGN_LEFT);
 		setTextColor(1, 1, 1, 1);
 
-		local lineCount = 0;
-		local lineOffset = 0;
-		local fontSize = g_currentMission.moneyTextSize;
-		local lineDist = fontSize + 0.002;
+		--local lineCount = 0;
+		--local lineOffset = 0;
+		--local fontSize = g_currentMission.moneyTextSize;
+		--local lineDist = fontSize + 0.002;
 
-		for fillType, info in pairs(priceNotify.fillTypes) do
-				lineOffset = lineCount * .05;
-				lineOffset = lineOffset + .3;
-				line = g_i18n:getText(FillUtil.fillTypeIntToName[fillType]);
-				renderText(.5, lineOffset, fontSize, line);
+		--for fillType, info in pairs(priceNotify.fillTypes) do
+				--lineOffset = lineCount * .05;
+				--lineOffset = lineOffset + .3;
+				--line = g_i18n:getText(FillUtil.fillTypeIntToName[fillType]);
+				--renderText(.5, lineOffset, fontSize, line);
 
-				lineCount = lineCount + 1;
-		end;
+				--lineCount = lineCount + 1;
+		--end;
 end;
 
 
