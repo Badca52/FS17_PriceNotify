@@ -57,10 +57,12 @@ function priceNotify:loadStoredFruits()
 			if fillInfo ~= nil then
 				for k, info in pairs(fillInfo) do
 					if info.fillLevel > 0 then
-						priceNotify.fillTypes[fillType] = {};
-						priceNotify.fillTypes[fillType].maxPrice = 0;
-						priceNotify.fillTypes[fillType].shopName = "";
-						priceNotify.fillTypes[fillType].trending = false;
+						if priceNotify.fillTypes[fillType] == nil then
+							priceNotify.fillTypes[fillType] = {};
+							priceNotify.fillTypes[fillType].maxPrice = 0;
+							priceNotify.fillTypes[fillType].shopName = "";
+							priceNotify.fillTypes[fillType].trending = false;
+						end;
 					end;
 				end;
 			end;
@@ -69,9 +71,11 @@ function priceNotify:loadStoredFruits()
 
 	-- check animals ... well sheep, I thought you have to sell milk, but turns out you don't (I should get into cow business)
 	if g_currentMission.husbandries.sheep.totalNumAnimals > 0 then
-		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL] = {};
-		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].maxPrice = 0;
-		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].shopName = "";
-		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].trending = false;
+		if priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL] == nil then
+			priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL] = {};
+			priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].maxPrice = 0;
+			priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].shopName = "";
+			priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].trending = false;
+		end;
 	end;
 end;
