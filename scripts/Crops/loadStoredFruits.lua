@@ -1,11 +1,6 @@
 function priceNotify:loadStoredFruits()
 	local fillInfo = {};
 
-	-- Reset if we have stuff or not, so we don't display prices when we sold the beans ages ago.
-	for fillT, infos in pairs(priceNotify.fillTypes) do
-		infos.gotSome = false;
-	end;
-
 	-- check silos
 	for k, silo in pairs(g_currentMission.siloTriggers) do
 		if silo ~= nil then
@@ -13,12 +8,19 @@ function priceNotify:loadStoredFruits()
 				if silo.getFillLevel ~= nil then
 					if silo:getFillLevel(fillType) > 0 then
 						if priceNotify.fillTypes[fillType] == nil then
-							priceNotify.fillTypes[fillType] = {};						
+							priceNotify.fillTypes[fillType] = {};
 							priceNotify.fillTypes[fillType].maxPrice = 0;
 							priceNotify.fillTypes[fillType].shopName = "";
 							priceNotify.fillTypes[fillType].trending = false;
 						end;
 					end;
+
+					--if silo:getFillLevel(fillType) <= 0 then
+					--	if priceNotify.fillTypes[fillType] ~= nil then
+					--		table.remove(priceNotify.fillTypes, fillType);
+					--	end;
+					--end;
+
 				end;
 			end;
 		end;
@@ -33,7 +35,12 @@ function priceNotify:loadStoredFruits()
 					if fillInfo ~= nil then
 						for i, container in pairs(fillInfo) do
 							if container.fillLevel > 0 then
-								priceNotify.fillTypes[fillType] = {};
+								if priceNotify.fillTypes[fillType] == nil then
+									priceNotify.fillTypes[fillType] = {};
+									priceNotify.fillTypes[fillType].maxPrice = 0;
+									priceNotify.fillTypes[fillType].shopName = "";
+									priceNotify.fillTypes[fillType].trending = false;
+								end;
 							end;
 						end;
 					end;
@@ -51,6 +58,9 @@ function priceNotify:loadStoredFruits()
 				for k, info in pairs(fillInfo) do
 					if info.fillLevel > 0 then
 						priceNotify.fillTypes[fillType] = {};
+						priceNotify.fillTypes[fillType].maxPrice = 0;
+						priceNotify.fillTypes[fillType].shopName = "";
+						priceNotify.fillTypes[fillType].trending = false;
 					end;
 				end;
 			end;
@@ -59,6 +69,9 @@ function priceNotify:loadStoredFruits()
 
 	-- check animals ... well sheep, I thought you have to sell milk, but turns out you don't (I should get into cow business)
 	if g_currentMission.husbandries.sheep.totalNumAnimals > 0 then
-		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].gotSome = true;
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL] = {};
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].maxPrice = 0;
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].shopName = "";
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].trending = false;
 	end;
 end;
