@@ -33,6 +33,28 @@ end;
 --create if not exist
 function xmlHandler:create()
   print "Let's Create a default XML"
+
+  local defaultFolder = priceNotify.path;
+  local defaultXmlFileName = defaultFolder .. "/" .. "defaultConfig.xml";
+
+  local folder = getUserProfileAppPath() .. "modsSettings";
+  local tag = "priceNotify";
+
+  local xmlFileName = folder .. "/" .. "priceNotify.xml";
+  local xmlFile
+
+  local defaultConfig = io.open(defaultXmlFileName, "w");
+  if defaultConfig == nil then
+      print("File may be locked or read-only " .. defaultXmlFileName);
+  else
+    local contents = defaultConfig:read("*a")
+    defaultConfig = nil
+    newConfig = io.open(xmlFileName, "w")
+    newConfig:write(contents)
+    newConfig:close()
+    newConfig = nil
+  end
+
 end;
 
 --save settings
