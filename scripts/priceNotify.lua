@@ -12,6 +12,8 @@ end;
 priceNotify.modName = g_currentModName;
 priceNotify.dialog = {};
 
+source(priceNotify.path .. 'scripts/Xml/xmlHandler.lua')
+
 -- Load Alarm scripts
 source(priceNotify.path .. 'scripts/Alarm/alarmLibrary.lua')
 
@@ -42,6 +44,7 @@ end;
 
 function priceNotify:update(dt)
   if priceNotify.firstLoad then
+    xmlHandler.load();
     alarmLibrary.load();
     print(priceNotify.alarmLibrary);
     shops.load();
