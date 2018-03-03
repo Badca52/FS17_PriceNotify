@@ -1,7 +1,7 @@
 xmlHandler = {}
 
 --load settings
-function xmlHandler.load()
+function xmlHandler:load()
   print "Loading XML File"
   -- following 'DeckerMMIV' and creating a modsSettings folder
   local folder = getUserProfileAppPath() .. "modsSettings";
@@ -14,23 +14,25 @@ function xmlHandler.load()
 
   if fileExists(xmlFileName) then
     print(tag);
-    xmlFile = loadXMLFiLe(tag, xmlFileName);
+    xmlFile = loadXMLFile(tag, xmlFileName);
     if xmlFile ~= nil then
-      local version = getXMLInt(xmlFile, "priceNotify#version");
+      local version = getXMLString(xmlFile, "priceNotify#version");
       print(version);
     else
-      print "XML file did not load"
+      print "XML file failed to load"
     end
   else
     print "XML file does not exist"
+    --create it
+    self:create();
   end
 
   return xmlFile;
 end;
 
 --create if not exist
-function xmlHandler.create()
-
+function xmlHandler:create()
+  print "Let's Create a default XML"
 end;
 
 --save settings

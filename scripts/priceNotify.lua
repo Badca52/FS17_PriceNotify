@@ -44,7 +44,7 @@ end;
 
 function priceNotify:update(dt)
   if priceNotify.firstLoad then
-    xmlHandler.load();
+    xmlHandler:load();
     alarmLibrary.load();
     print(priceNotify.alarmLibrary);
     shops.load();
