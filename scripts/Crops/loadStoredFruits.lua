@@ -27,27 +27,27 @@ function priceNotify:loadStoredFruits()
 	end;
 
 	-- check trailers
-	for k, attachable in pairs(g_currentMission.attachables) do
-		if attachable ~= nil then
-			if attachable.typeDesc == "tipper" then
-				if attachable.getFillLevelInformation ~= nil then
-					attachable:getFillLevelInformation(fillInfo);
-					if fillInfo ~= nil then
-						for i, container in pairs(fillInfo) do
-							if container.fillLevel > 0 then
-								if priceNotify.fillTypes[fillType] == nil then
-									priceNotify.fillTypes[fillType] = {};
-									priceNotify.fillTypes[fillType].maxPrice = 0;
-									priceNotify.fillTypes[fillType].shopName = "";
-									priceNotify.fillTypes[fillType].trending = false;
-								end;
-							end;
-						end;
-					end;
-				end;
-			end;
-		end;
-	end;
+	--for k, attachable in pairs(g_currentMission.attachables) do
+	--	if attachable ~= nil then
+	--		if attachable.typeDesc == "tipper" then
+	--			if attachable.getFillLevelInformation ~= nil then
+	--			attachable:getFillLevelInformation(fillInfo);
+	--				if fillInfo ~= nil then
+	--					for i, container in pairs(fillInfo) do
+	--						if container.fillLevel > 0 then
+	--							if priceNotify.fillTypes[fillType] == nil then
+	--								priceNotify.fillTypes[fillType] = {};
+	--								priceNotify.fillTypes[fillType].maxPrice = 0;
+	--								priceNotify.fillTypes[fillType].shopName = "";
+	--								priceNotify.fillTypes[fillType].trending = false;
+	--							end;
+	--						end;
+	--					end;
+	--				end;
+	--			end;
+	--		end;
+	--	end;
+	--end;
 
 	-- check trains
 	fillInfo = {};
@@ -67,6 +67,13 @@ function priceNotify:loadStoredFruits()
 				end;
 			end;
 		end;
+	end;
+
+	if priceNotify.fillTypes[FillUtil.FILLTYPE_WOODCHIPS] == nil then
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOODCHIPS] = {};
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOODCHIPS].maxPrice = 0;
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOODCHIPS].shopName = "";
+		priceNotify.fillTypes[FillUtil.FILLTYPE_WOODCHIPS].trending = false;
 	end;
 
 	-- check animals ... well sheep, I thought you have to sell milk, but turns out you don't (I should get into cow business)
