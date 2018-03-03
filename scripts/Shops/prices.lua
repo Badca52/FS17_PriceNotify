@@ -1,4 +1,6 @@
-function priceNotify:updatePrices()
+prices = {}
+
+function prices.update()
 
 	-- go through the list of fillTypes that sellplaces accept
 	for fillT, info in pairs(priceNotify.fillTypes) do
@@ -28,12 +30,12 @@ function priceNotify:updatePrices()
 			end;
 
 			local cropName = g_i18n:getText(FillUtil.fillTypeIntToName[fillT]);
-			
+
 			if priceNotify.alarmLibrary[cropName] ~= nil then
 				priceNotify.alarmLibrary[cropName].curMaxPrice = math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000);
 
 				if priceNotify.alarmLibrary[cropName].curMaxPrice >= priceNotify.alarmLibrary[cropName].threshold and priceNotify.alarmLibrary[cropName].active == false then
-					priceNotify:showNotificationDialog(bestShop.mapHotspot.fullViewName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), priceNotify.alarmLibrary[cropName].curMaxPrice);
+					notificationDialog.show(bestShop.mapHotspot.fullViewName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), priceNotify.alarmLibrary[cropName].curMaxPrice);
 					priceNotify.alarmLibrary[cropName].active = true;
 				end;
 

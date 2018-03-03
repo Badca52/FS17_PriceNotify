@@ -13,18 +13,18 @@ priceNotify.modName = g_currentModName;
 priceNotify.dialog = {};
 
 -- Load Alarm scripts
-source(priceNotify.path .. 'scripts/Alarm/generateAlarmLibrary.lua')
+source(priceNotify.path .. 'scripts/Alarm/alarmLibrary.lua')
 
 -- Load Crop Scripts
-source(priceNotify.path .. 'scripts/Crops/loadStoredFruits.lua')
-source(priceNotify.path .. 'scripts/Crops/loadTrains.lua')
+source(priceNotify.path .. 'scripts/Crops/storedFruits.lua')
+source(priceNotify.path .. 'scripts/Crops/trains.lua')
 
 -- Load Shop Scripts
-source(priceNotify.path .. 'scripts/Shops/loadShops.lua')
-source(priceNotify.path .. 'scripts/Shops/updatePrices.lua')
+source(priceNotify.path .. 'scripts/Shops/shops.lua')
+source(priceNotify.path .. 'scripts/Shops/prices.lua')
 
 -- Load Dialog Scripts
-source(priceNotify.path .. 'scripts/Dialogs/showNotificationDialog.lua')
+source(priceNotify.path .. 'scripts/Dialogs/notificationDialog.lua')
 
 function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
@@ -42,20 +42,20 @@ end;
 
 function priceNotify:update(dt)
   if priceNotify.firstLoad then
-    priceNotify:generateAlarmLibrary();
+    alarmLibrary.load();
     print(priceNotify.alarmLibrary);
-    priceNotify:loadShops();
-    priceNotify:loadTrains();
-    priceNotify:loadStoredFruits();
-    priceNotify:updatePrices();
+    shops.load();
+    trains.load();
+    storedFruits.load()
+    prices.update();
     priceNotify.firstLoad = false;
   end;
 
 	priceNotify.deltaT = priceNotify.deltaT + dt;
 	if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
 		priceNotify.deltaT = 0;
-		priceNotify:loadStoredFruits();
-    priceNotify:updatePrices();
+    storedFruits.load();
+    prices.update();
 	end;
 end;
 

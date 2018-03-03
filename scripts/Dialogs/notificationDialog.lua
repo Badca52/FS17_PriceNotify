@@ -1,4 +1,6 @@
-function priceNotify:showNotificationDialog(shop, fruit, price)
+notificationDialog = {}
+
+function notificationDialog.show(shop, fruit, price)
     local msg = fruit .. " - $" .. price;
     g_gui:showYesNoDialog({
         text = msg,

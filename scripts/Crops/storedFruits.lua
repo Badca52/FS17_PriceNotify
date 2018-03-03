@@ -1,4 +1,7 @@
-function priceNotify:loadStoredFruits()
+storedFruits = {}
+
+function storedFruits.load()
+	print "Loading Stored Fruits"
 	local fillInfo = {};
 
 	-- check silos
@@ -78,4 +81,4 @@ function priceNotify:loadStoredFruits()
 			priceNotify.fillTypes[FillUtil.FILLTYPE_WOOL].trending = false;
 		end;
 	end;
-end;
+end
