@@ -2,7 +2,7 @@ alarmLibrary = {}
 
 function alarmLibrary.load()
   priceNotify.alarmLibrary = {
-    ["Wheat"] = { threshold = 1200, active = false, curMaxPrice = 0 },
+    ["Wheat"] = { threshold = 700, active = false, curMaxPrice = 0 },
     ["Barley"] = { threshold = 475, active = false, curMaxPrice = 0 },
     ["Canola"] = { threshold = 1300, active = false, curMaxPrice = 0 },
     ["Sunflowers"] = { threshold = 1100, active = false, curMaxPrice = 0 },
