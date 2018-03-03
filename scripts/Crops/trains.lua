@@ -1,4 +1,7 @@
-function priceNotify:loadTrains()
+trains = {}
+
+function trains.load()
+	print "Loading Trains"
   -- save trains for later
 		for k, steerable in pairs(g_currentMission.steerables) do
 			if steerable ~= nil then
