@@ -31,7 +31,7 @@ function prices.update()
 
 			local cropName = g_i18n:getText(FillUtil.fillTypeIntToName[fillT]);
 
-			if priceNotify.fillTypes[fillT] ~= nil and priceNotify.fillTypes[fillT].threshold ~= nil then
+			if priceNotify.fillTypes[fillT] ~= nil and priceNotify.fillTypes[fillT].threshold ~= nil and bestShop.mapHotspot ~= nil then
 				priceNotify.fillTypes[fillT].curMaxPrice = math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000);
 
 				if priceNotify.fillTypes[fillT].curMaxPrice >= priceNotify.fillTypes[fillT].threshold and priceNotify.fillTypes[fillT].active == false then

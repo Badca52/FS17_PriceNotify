@@ -63,7 +63,8 @@ function xmlHandler.loadSettings()
   for k, fillType in pairs(priceNotify.fillTypes) do
     local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
     if hasXMLProperty(xmlFile, tag .. "#threshold") then
-      threshold = getXMLInt(xmlFile, tag .. "#threshold");
+      val = getXMLInt(xmlFile, tag .. "#threshold");
+      if val == 0 then threshold = nil else threshold = val end;
       fillType.threshold = threshold
     else
       setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
