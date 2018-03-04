@@ -44,12 +44,12 @@ end;
 
 function priceNotify:update(dt)
   if priceNotify.firstLoad then
-    xmlHandler:load();
     alarmLibrary.load();
-    print(priceNotify.alarmLibrary);
     shops.load();
     trains.load();
-    storedFruits.load()
+    storedFruits.load();
+    xmlHandler:load();
+    xmlHandler.loadSettings();
     prices.update();
     priceNotify.firstLoad = false;
   end;

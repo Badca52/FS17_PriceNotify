@@ -1,6 +1,7 @@
 xmlHandler = {}
+local xmlFile
 
---load settings
+--load xml
 function xmlHandler:load()
   print "Loading XML File"
   -- following 'DeckerMMIV' and creating a modsSettings folder
@@ -8,12 +9,8 @@ function xmlHandler:load()
   local tag = "priceNotify";
 
   local xmlFileName = folder .. "/" .. "priceNotify.xml";
-  local xmlFile
-
-  print(xmlFileName);
 
   if fileExists(xmlFileName) then
-    print(tag);
     xmlFile = loadXMLFile(tag, xmlFileName);
     if xmlFile ~= nil then
       local version = getXMLString(xmlFile, "priceNotify#version");
@@ -30,31 +27,40 @@ function xmlHandler:load()
   return xmlFile;
 end;
 
---create if not exist
+--create xml if not exist
 function xmlHandler:create()
-  print "Let's Create a default XML"
-
-  local defaultFolder = priceNotify.path;
-  local defaultXmlFileName = defaultFolder .. "/" .. "defaultConfig.xml";
+  print "Let's Create a default XML";
 
   local folder = getUserProfileAppPath() .. "modsSettings";
   local tag = "priceNotify";
 
   local xmlFileName = folder .. "/" .. "priceNotify.xml";
-  local xmlFile
 
-  local defaultConfig = io.open(defaultXmlFileName, "w");
-  if defaultConfig == nil then
-      print("File may be locked or read-only " .. defaultXmlFileName);
+  xmlFile = createXMLFile("priceNotify.xml", xmlFileName, "priceNotify");
+  saveXMLFile(xmlFile);
+  if fileExists(xmlFileName) then
+    if xmlFile ~= nil then
+      setXMLString(xmlFile, "priceNotify#version", "0.1.0.1"); -- Use code for this
+
+      for k, fillType in pairs(priceNotify.fillTypes) do
+        local tag = "priceNotify.fillyTypes." .. g_i18n:getText(FillUtil.fillTypeIntToName[k]) .. "#threshold";
+        setXMLInt(xmlFile, tag, 1200);
+      end
+
+      saveXMLFile(xmlFile)
+      print "XML Created";
+    else
+      print "Newly Created XML file failed to load";
+    end
   else
-    local contents = defaultConfig:read("*a")
-    defaultConfig = nil
-    newConfig = io.open(xmlFileName, "w")
-    newConfig:write(contents)
-    newConfig:close()
-    newConfig = nil
+    print "Newly Created XML file does not exist";
   end
 
+end;
+
+--load settings
+function xmlHandler.loadSettings()
+  print "This is when we would load from XML";
 end;
 
 --save settings
