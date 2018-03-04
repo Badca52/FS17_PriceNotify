@@ -31,16 +31,16 @@ function prices.update()
 
 			local cropName = g_i18n:getText(FillUtil.fillTypeIntToName[fillT]);
 
-			if priceNotify.alarmLibrary[cropName] ~= nil then
-				priceNotify.alarmLibrary[cropName].curMaxPrice = math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000);
+			if priceNotify.fillTypes[fillT] ~= nil and priceNotify.fillTypes[fillT].threshold ~= nil then
+				priceNotify.fillTypes[fillT].curMaxPrice = math.floor(bestShop:getEffectiveFillTypePrice(fillT) * 1000);
 
-				if priceNotify.alarmLibrary[cropName].curMaxPrice >= priceNotify.alarmLibrary[cropName].threshold and priceNotify.alarmLibrary[cropName].active == false then
-					notificationDialog.show(bestShop.mapHotspot.fullViewName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), priceNotify.alarmLibrary[cropName].curMaxPrice);
-					priceNotify.alarmLibrary[cropName].active = true;
+				if priceNotify.fillTypes[fillT].curMaxPrice >= priceNotify.fillTypes[fillT].threshold and priceNotify.fillTypes[fillT].active == false then
+					notificationDialog.show(bestShop.mapHotspot.fullViewName, g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), priceNotify.fillTypes[fillT].curMaxPrice);
+					priceNotify.fillTypes[fillT].active = true;
 				end;
 
-				if priceNotify.alarmLibrary[cropName].curMaxPrice < priceNotify.alarmLibrary[cropName].threshold then
-					priceNotify.alarmLibrary[cropName].active = false;
+				if priceNotify.fillTypes[fillT].curMaxPrice < priceNotify.fillTypes[fillT].threshold then
+					priceNotify.fillTypes[fillT].active = false;
 				end;
 			end;
 	end;
