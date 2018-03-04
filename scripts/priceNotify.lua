@@ -1,6 +1,5 @@
 priceNotify = {};
 priceNotify.fillTypes = {};
-priceNotify.alarmLibrary = {};
 priceNotify.deltaT = 0;
 priceNotify.shops = {};
 priceNotify.trains = {};
@@ -14,11 +13,8 @@ priceNotify.dialog = {};
 
 source(priceNotify.path .. 'scripts/Xml/xmlHandler.lua')
 
--- Load Alarm scripts
-source(priceNotify.path .. 'scripts/Alarm/alarmLibrary.lua')
-
 -- Load Crop Scripts
-source(priceNotify.path .. 'scripts/Crops/storedFruits.lua')
+source(priceNotify.path .. 'scripts/Crops/fruits.lua')
 source(priceNotify.path .. 'scripts/Crops/trains.lua')
 
 -- Load Shop Scripts
@@ -44,10 +40,9 @@ end;
 
 function priceNotify:update(dt)
   if priceNotify.firstLoad then
-    alarmLibrary.load();
     shops.load();
     trains.load();
-    storedFruits.load();
+    fruits.load();
     xmlHandler:load();
     xmlHandler.loadSettings();
     prices.update();
@@ -57,7 +52,7 @@ function priceNotify:update(dt)
 	priceNotify.deltaT = priceNotify.deltaT + dt;
 	if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
 		priceNotify.deltaT = 0;
-    storedFruits.load();
+    fruits.update();
     prices.update();
 	end;
 end;
