@@ -45,7 +45,7 @@ function xmlHandler:create()
       for k, fillType in pairs(priceNotify.fillTypes) do
         local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
         setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
-        setXMLInt(xmlFile, tag .. "#threshold", 1200);
+        setXMLString(xmlFile, tag .. "#threshold", "");
       end
 
       saveXMLFile(xmlFile);
@@ -65,11 +65,16 @@ function xmlHandler.loadSettings()
     if hasXMLProperty(xmlFile, tag .. "#threshold") then
       threshold = getXMLInt(xmlFile, tag .. "#threshold");
       fillType.threshold = threshold
+    else
+      setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
+      setXMLString(xmlFile, tag .. "#threshold", "");
+      fillType.threshold = nil
+      saveXMLFile(xmlFile);
     end
   end
   --for testing
   for k, fillType in pairs(priceNotify.fillTypes) do
-    print(g_i18n:getText(FillUtil.fillTypeIntToName[k]) .. ": " .. fillType.threshold);
+    print(g_i18n:getText(FillUtil.fillTypeIntToName[k]) .. ": " .. Utils.getNoNil(fillType.threshold, ""));
   end
 end;
 
@@ -78,6 +83,6 @@ function xmlHandler.save()
   for k, fillType in pairs(priceNotify.fillTypes) do
     local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
     setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
-    setXMLInt(xmlFile, tag .. "#threshold", fillType.threshold);
+    setXMLInt(xmlFile, tag .. "#threshold", Utils.getNoNil(fillType.threshold, ""));
   end
 end;
