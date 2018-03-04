@@ -60,10 +60,24 @@ end;
 
 --load settings
 function xmlHandler.loadSettings()
-  print "This is when we would load from XML";
+  for k, fillType in pairs(priceNotify.fillTypes) do
+    local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
+    if hasXMLProperty(xmlFile, tag .. "#threshold") then
+      threshold = getXMLInt(xmlFile, tag .. "#threshold");
+      fillType.threshold = threshold
+    end
+  end
+  --for testing
+  for k, fillType in pairs(priceNotify.fillTypes) do
+    print(g_i18n:getText(FillUtil.fillTypeIntToName[k]) .. ": " .. fillType.threshold);
+  end
 end;
 
---save settings
+--save settings -WIP
 function xmlHandler.save()
-
+  for k, fillType in pairs(priceNotify.fillTypes) do
+    local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
+    setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
+    setXMLInt(xmlFile, tag .. "#threshold", fillType.threshold);
+  end
 end;
