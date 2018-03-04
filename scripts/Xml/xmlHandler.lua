@@ -40,7 +40,7 @@ function xmlHandler:create()
   saveXMLFile(xmlFile);
   if fileExists(xmlFileName) then
     if xmlFile ~= nil then
-      setXMLString(xmlFile, "priceNotify#version", "0.1.0.1"); -- Use code for this
+      setXMLString(xmlFile, "priceNotify#version", "0.2.0.0"); -- Use code for this
 
       for k, fillType in pairs(priceNotify.fillTypes) do
         local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
