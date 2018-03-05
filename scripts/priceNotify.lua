@@ -11,6 +11,7 @@ end;
 priceNotify.modName = g_currentModName;
 priceNotify.dialog = {};
 
+-- XML
 source(priceNotify.path .. 'scripts/Xml/xmlHandler.lua')
 
 -- Load Crop Scripts
@@ -23,6 +24,9 @@ source(priceNotify.path .. 'scripts/Shops/prices.lua')
 
 -- Load Dialog Scripts
 source(priceNotify.path .. 'scripts/Dialogs/notificationDialog.lua')
+
+-- GUI
+source(priceNotify.path .. 'scripts/Gui/gui.lua')
 
 function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
