@@ -34,7 +34,6 @@ function fruits.load()
 end;
 
 function fruits.update()
-  print "Updating Fruits"
 
   for i, fillType in pairs(priceNotify.fillTypes) do
     for j, silo in pairs(g_currentMission.siloTriggers) do
