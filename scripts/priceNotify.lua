@@ -28,6 +28,9 @@ source(priceNotify.path .. 'scripts/Dialogs/notificationDialog.lua')
 -- GUI
 source(priceNotify.path .. 'scripts/Gui/gui.lua')
 
+-- Price Logging
+source(priceNotify.path .. 'scripts/Log/logPrices.lua')
+
 function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
 
@@ -54,10 +57,23 @@ function priceNotify:update(dt)
   end;
 
 	priceNotify.deltaT = priceNotify.deltaT + dt;
-	if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
+  if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
 		priceNotify.deltaT = 0;
     fruits.update();
     prices.update();
+	end;
+  
+	if priceNotify.deltaT >= 60000 then  -- only log prices once every 60 seconds
+    if (BaseMission.getIsServer()) then
+      priceLogger:open();
+      for fillT, info in pairs(priceNotify.fillTypes) do
+        if info.curMaxPrice ~= nil then
+          priceLogger:logPrice(g_i18n:getText(FillUtil.fillTypeIntToName[fillT]), info.curMaxPrice);
+        end;
+      end;
+      priceLogger:close();
+    end;
+
 	end;
 end;
 
