@@ -1,6 +1,7 @@
 priceNotify = {};
 priceNotify.fillTypes = {};
 priceNotify.deltaT = 0;
+priceNotify.deltaTLogPrices = 0;
 priceNotify.shops = {};
 priceNotify.trains = {};
 priceNotify.firstLoad = true;
@@ -54,6 +55,7 @@ function priceNotify:update(dt)
     xmlHandler.loadSettings();
     prices.update();
     priceNotify.firstLoad = false;
+    print(g_currentMission:getIsServer());
   end;
 
 	priceNotify.deltaT = priceNotify.deltaT + dt;
@@ -62,9 +64,11 @@ function priceNotify:update(dt)
     fruits.update();
     prices.update();
 	end;
-  
-	if priceNotify.deltaT >= 60000 then  -- only log prices once every 60 seconds
-    if (BaseMission.getIsServer()) then
+
+  priceNotify.deltaTLogPrices = priceNotify.deltaTLogPrices + dt;
+	if priceNotify.deltaTLogPrices >= 60000 then  -- only log prices once every 60 seconds
+    priceNotify.deltaTLogPrices = 0;
+    if (g_currentMission:getIsServer() and g_dedicatedServerInfo ~= nil) then
       priceLogger:open();
       for fillT, info in pairs(priceNotify.fillTypes) do
         if info.curMaxPrice ~= nil then
