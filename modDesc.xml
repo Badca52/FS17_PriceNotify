@@ -111,5 +111,9 @@
 
 	<extraSourceFiles>
         <sourceFile filename="scripts/priceNotify.lua" />
-    </extraSourceFiles>
+  </extraSourceFiles>
+
+  <inputBindings>
+    <input name="PRICE_NOTIFY_SHOW_MENU" category="ONFOOT VEHICLE" key1="KEY_lalt KEY_n" button="BUTTON_5 BUTTON_10" />
+  </inputBindings>
 </modDesc>

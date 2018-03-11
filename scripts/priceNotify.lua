@@ -56,8 +56,16 @@ function priceNotify:update(dt)
     prices.update();
     priceNotify.firstLoad = false;
     print(g_currentMission:getIsServer());
-    g_gui:showGui("priceNotifySettings")
+    if self.showControlsInHelpScreen then
+      --g_currentMission:addHelpButtonText(g_i18n:getText("input_PRICE_NOTIFY_SHOW_MENU"), InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)
+      g_currentMission:addHelpButtonText("Open Price Notify Settings", InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)
+    end
   end;
+
+  -- Open the menu
+  if InputBinding.hasEvent(InputBinding.PRICE_NOTIFY_SHOW_MENU) then
+      g_gui:showGui("priceNotifySettings")
+  end
 
 	priceNotify.deltaT = priceNotify.deltaT + dt;
   if priceNotify.deltaT >= 10000 then  -- only update prices once every 10 seconds
