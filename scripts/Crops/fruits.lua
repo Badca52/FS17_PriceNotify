@@ -21,8 +21,10 @@ function fruits.load()
       			for k, fill in pairs(silo.fillTypes) do
       				if silo.getFillLevel ~= nil then
                 if silo:getFillLevel(k) > 0 then
-                  priceNotify.fillTypes[k].hasSome = true;
-                  break;
+                  if priceNotify.fillTypes[k] ~= nil then --Was seeing errors so added this.
+                    priceNotify.fillTypes[k].hasSome = true;
+                    break;
+                  end;
                 end;
               end;
             end;

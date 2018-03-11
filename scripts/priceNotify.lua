@@ -28,6 +28,9 @@ source(priceNotify.path .. 'scripts/Dialogs/notificationDialog.lua')
 -- GUI
 source(priceNotify.path .. 'scripts/Gui/gui.lua')
 
+priceNotify.settingsGui = gui:new()
+g_gui:loadGui(priceNotify.path .. "scripts/Gui/gui.xml", "priceNotifySettings", priceNotify.settingsGui)
+
 function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
 
@@ -43,6 +46,7 @@ function priceNotify:mouseEvent(posX, posY, isDown, isUp, button)
 end;
 
 function priceNotify:update(dt)
+  --Can all of this be in the load map? Should stop the before loading in popup
   if priceNotify.firstLoad then
     shops.load();
     trains.load();
@@ -52,6 +56,7 @@ function priceNotify:update(dt)
     prices.update();
     priceNotify.firstLoad = false;
     print(g_currentMission:getIsServer());
+    g_gui:showGui("priceNotifySettings")
   end;
 
 	priceNotify.deltaT = priceNotify.deltaT + dt;
