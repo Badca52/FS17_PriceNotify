@@ -7,74 +7,79 @@
             <GuiElement type="bitmap" profile="uiElementBaseHeader">
               <GuiElement type="text" profile="headerText" text="Notification Settings" />
             </GuiElement>
-              <!-- Column 1 -->
-              <GuiElement type="boxLayout" profile="settingsBox" position="20px 536px" >
-                  <!-- Season intros on/off -->
-                  <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateSeasonIntros" toolTip="tooltip_seasonIntros" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="210" focusChangeTop="1" focusChangeBottom="211" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_seasonIntros"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement>
-
-                  <!-- Season intros on/off -->
-                  <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateControlsHelp" toolTip="tooltip_controlsHelp" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="211" focusChangeTop="210" focusChangeBottom="212" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_controlsHelp"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement>
-
-                  <!-- Fahrenheit -->
-                  <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateControlsTemperature" toolTip="tooltip_controlsTemperature" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="212" focusChangeTop="211" focusChangeBottom="220" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_controlsTemperature"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement>
+            <!-- Column 1 -->
+            <GuiElement type="boxLayout" profile="settingsBox" position="20px 536px" >
+              <!-- Season intros on/off -->
+              <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateSeasonIntros" toolTip="tooltip_seasonIntros" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="210" focusChangeTop="1" focusChangeBottom="211" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_seasonIntros"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
               </GuiElement>
 
-              <!-- Column 2 -->
-              <GuiElement type="boxLayout" profile="settingsBox" position="347px 536px" id="settingsColumn2">
-                  <!-- Season length -->
-                  <!--<GuiElement type="multiTextOption" profile="multiTextOptionSettings" onCreate="onCreateSeasonLength" toolTip="tooltip_seasonLength" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="220" focusChangeTop="212" focusChangeBottom="221" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_seasonLength"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement> -->
-
-                  <!-- Snow -->
-                  <!-- <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onCreate="onCreateSnow" toolTip="tooltip_snow" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="221" focusChangeTop="220" focusChangeBottom="222" onClick="onClickSnowToggle">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_snow"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement> -->
-
-                  <!-- Snow tracks -->
-                  <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateSnowTracksToggle" toolTip="tooltip_snowTracks" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="222" focusChangeTop="221" focusChangeBottom="223" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_snowTracks"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement>
-
-                  <!-- Moisture -->
-                  <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateMoistureToggle" toolTip="tooltip_moisture" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="223" focusChangeTop="222" focusChangeBottom="100" onClick="updateApplySettingsButton">
-                      <GuiElement type="button" profile="multiTextOptionLeft" />
-                      <GuiElement type="button" profile="multiTextOptionRight"/>
-                      <GuiElement type="text"   profile="multiTextOptionText" />
-                      <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_moisture"/>
-                      <GuiElement type="bitmap" profile="multiTextOptionBg" />
-                  </GuiElement>
+              <!-- Season intros on/off -->
+              <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateControlsHelp" toolTip="tooltip_controlsHelp" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="211" focusChangeTop="210" focusChangeBottom="212" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_controlsHelp"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
               </GuiElement>
+
+              <!-- Fahrenheit -->
+              <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateControlsTemperature" toolTip="tooltip_controlsTemperature" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="212" focusChangeTop="211" focusChangeBottom="220" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_controlsTemperature"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement>
+            </GuiElement>
+
+            <!-- Column 2 -->
+            <GuiElement type="boxLayout" profile="settingsBox" position="347px 536px" id="settingsColumn2">
+              <!-- Season length -->
+              <!--<GuiElement type="multiTextOption" profile="multiTextOptionSettings" onCreate="onCreateSeasonLength" toolTip="tooltip_seasonLength" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="220" focusChangeTop="212" focusChangeBottom="221" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_seasonLength"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement> -->
+
+              <!-- Snow -->
+              <!-- <GuiElement type="multiTextOption" profile="multiTextOptionSettings" onCreate="onCreateSnow" toolTip="tooltip_snow" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="221" focusChangeTop="220" focusChangeBottom="222" onClick="onClickSnowToggle">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_snow"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement> -->
+              <GuiElement type="textInput" profile="inputTextBox" text="2000" textAlignment="center" maxCharacters="6" maxInputTextWidth="300px" >
+                <GuiElement type="text" profile="multiTextOptionTitle"  text="Test Field" />
+                <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement>
+
+              <!-- Snow tracks -->
+              <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateSnowTracksToggle" toolTip="tooltip_snowTracks" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="222" focusChangeTop="221" focusChangeBottom="223" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_snowTracks"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement>
+
+              <!-- Moisture -->
+              <GuiElement type="toggleButton2" profile="multiTextOptionSettings" onCreate="onCreateMoistureToggle" toolTip="tooltip_moisture" onFocus="onFocusSettingsBox" onLeave="onLeaveSettingsBox" focusId="223" focusChangeTop="222" focusChangeBottom="100" onClick="updateApplySettingsButton">
+                  <GuiElement type="button" profile="multiTextOptionLeft" />
+                  <GuiElement type="button" profile="multiTextOptionRight"/>
+                  <GuiElement type="text"   profile="multiTextOptionText" />
+                  <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_moisture"/>
+                  <GuiElement type="bitmap" profile="multiTextOptionBg" />
+              </GuiElement>
+
+            </GuiElement>
 
             <!-- Tool tips -->
             <GuiElement type="bitmap" profile="ingameMenuHelpRowBg" id="ssMenuToolTipBox" visible="false">

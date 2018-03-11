@@ -60,6 +60,13 @@ function priceNotify:update(dt)
       --g_currentMission:addHelpButtonText(g_i18n:getText("input_PRICE_NOTIFY_SHOW_MENU"), InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)
       g_currentMission:addHelpButtonText("Open Price Notify Settings", InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)
     end
+
+    --for i, prof in pairs(g_gui.profiles) do
+      --print(prof.name)
+      --for key,value in pairs(prof) do
+      --	print( key, value )
+      --end
+    --end;
   end;
 
   -- Open the menu
