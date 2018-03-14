@@ -1,4 +1,5 @@
 gui = {};
+gui.settingsElements = {}
 
 local gui_mt = Class(gui, ScreenElement)
 
@@ -15,13 +16,13 @@ end;
 
 function gui:onOpen()
   -- Not Yet Implemented
-  print("Settings Open")
+  print("Settings Open");
   gui:superClass().onOpen(self)
 end;
 
 function gui:onClose()
-  -- Not Yet Implemented
-  print("Settings Close")
+  print("Settings Close");
+  gui:save(self)
   gui:superClass().onClose(self)
 end;
 
@@ -30,12 +31,28 @@ function gui:onCreate()
 end;
 
 function gui:save()
-  -- Not Yet Implemented
-  print("Settings Saving")
+  print("Settings Saving");
+  for i, element in pairs(self.settingsElements) do
+    local fillType = tonumber(string.match(element.id, "(%d+)"))
+    print("Fill Type ID: " .. fillType);
+    print("Before threshold: " .. priceNotify.fillTypes[fillType].threshold);
+    if priceNotify.fillTypes ~= nil and priceNotify.fillTypes[fillType] ~= nil then
+      priceNotify.fillTypes[fillType].threshold = tonumber(element.text)
+    end;
+    print("After threshold: " .. priceNotify.fillTypes[fillType].threshold);
+  end;
+  xmlHandler.save()
 end;
 
 function gui:onClickBack()
   print("Back Button Clicked")
   gui:superClass().onClickBack(self)
   g_gui:showGui("") -- this forces a gui:onClose event.
+end;
+
+function gui:onCreateElement(element)
+  --fillType = tonumber(string.match(element.id, "(%d+)"))
+  --self.settingsElements[fillType] = element
+  --Might not need these ^^^
+  table.insert(self.settingsElements, element)
 end;

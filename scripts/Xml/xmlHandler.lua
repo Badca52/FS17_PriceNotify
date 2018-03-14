@@ -81,9 +81,13 @@ end;
 
 --save settings -WIP
 function xmlHandler.save()
-  for k, fillType in pairs(priceNotify.fillTypes) do
-    local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
-    setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
-    setXMLInt(xmlFile, tag .. "#threshold", Utils.getNoNil(fillType.threshold, ""));
-  end
+  if xmlFile ~= nil then
+    print("Saving Settings to Disk");
+    for k, fillType in pairs(priceNotify.fillTypes) do
+      local tag = "priceNotify.fillyTypes.fillType" .. tostring(k);
+      setXMLString(xmlFile, tag .. "#readOnlyName" ,  g_i18n:getText(FillUtil.fillTypeIntToName[k]))
+      setXMLString(xmlFile, tag .. "#threshold", Utils.getNoNil(tostring(fillType.threshold), ""));
+    end;
+    saveXMLFile(xmlFile);
+  end;
 end;
