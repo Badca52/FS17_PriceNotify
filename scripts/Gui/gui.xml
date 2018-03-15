@@ -56,7 +56,7 @@
                   <GuiElement type="text"   profile="multiTextOptionTitle" text="setting_snow"/>
                   <GuiElement type="bitmap" profile="multiTextOptionBg" />
               </GuiElement> -->
-              <GuiElement type="textInput" id="fillType1" profile="inputTextBox" onCreate="onCreateElement" text="2000" textAlignment="center" maxCharacters="6" maxInputTextWidth="300px" >
+              <GuiElement type="textInput" id="fillType1" profile="inputTextBox" onCreate="onCreateElement" text="2000" textAlignment="center" maxCharacters="6" maxInputTextWidth="300px" textColor="0.12 0.12 0.12 1" textSelectedColor="0.12 0.12 0.12 1"  >
                 <GuiElement type="text" profile="multiTextOptionTitle"  text="Test Field" />
                 <!-- <GuiElement type="bitmap" profile="dialogTextPassword" /> -->
               </GuiElement>

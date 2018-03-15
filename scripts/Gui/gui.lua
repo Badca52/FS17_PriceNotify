@@ -38,6 +38,7 @@ function gui:save()
     print("Before threshold: " .. priceNotify.fillTypes[fillType].threshold);
     if priceNotify.fillTypes ~= nil and priceNotify.fillTypes[fillType] ~= nil then
       priceNotify.fillTypes[fillType].threshold = tonumber(element.text)
+      priceNotify.fillTypes[fillType].active = false
     end;
     print("After threshold: " .. priceNotify.fillTypes[fillType].threshold);
   end;
@@ -48,6 +49,7 @@ function gui:onClickBack()
   print("Back Button Clicked")
   gui:superClass().onClickBack(self)
   g_gui:showGui("") -- this forces a gui:onClose event.
+  prices.update();
 end;
 
 function gui:onCreateElement(element)
