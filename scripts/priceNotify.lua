@@ -28,9 +28,6 @@ source(priceNotify.path .. 'scripts/Dialogs/notificationDialog.lua')
 -- GUI
 source(priceNotify.path .. 'scripts/Gui/gui.lua')
 
-priceNotify.settingsGui = gui:new()
-g_gui:loadGui(priceNotify.path .. "scripts/Gui/gui.xml", "priceNotifySettings", priceNotify.settingsGui)
-
 function priceNotify:loadMap(name)
 	print("--- Price Notify loaded ---");
 
@@ -53,9 +50,16 @@ function priceNotify:update(dt)
     fruits.load();
     xmlHandler:load();
     xmlHandler.loadSettings();
+
+    --This might be a problem to do on first update. Need fillTypes to be generated in order to build UI
+    priceNotify.settingsGui = gui:new();
+    g_gui:loadGui(priceNotify.path .. "scripts/Gui/gui.xml", "priceNotifySettings", priceNotify.settingsGui);
+
     prices.update();
     priceNotify.firstLoad = false;
     print(g_currentMission:getIsServer());
+
+
     if self.showControlsInHelpScreen then
       --g_currentMission:addHelpButtonText(g_i18n:getText("input_PRICE_NOTIFY_SHOW_MENU"), InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)
       g_currentMission:addHelpButtonText("Open Price Notify Settings", InputBinding.PRICE_NOTIFY_SHOW_MENU, nil, GS_PRIO_VERY_LOW)

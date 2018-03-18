@@ -5,7 +5,7 @@ local xmlFile
 function xmlHandler:load()
   print "Loading XML File"
   -- following 'DeckerMMIV' and creating a modsSettings folder
-  local folder = getUserProfileAppPath() .. "modsSettings";
+  local folder = getUserProfileAppPath();
   local tag = "priceNotify";
 
   local xmlFileName = folder .. "/" .. "priceNotify.xml";
